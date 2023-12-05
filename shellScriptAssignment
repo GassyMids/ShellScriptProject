@@ -18,12 +18,14 @@ echo " (9) Exit "
 read menu_choice
 	if [ "$menu_choice" = 1 ]
 		then
+			clear
 			systemTime= "date"
 			echo " The current time and date is listed above: "
 			echo -n " $systemTime " 
 		fi
 	if [ "$menu_choice" = 2 ]
 		then
+			clear
 			echo -n " What is your FIRST name? "
 			read firstName
 			firstInitial=${firstName:0:1}
@@ -35,12 +37,14 @@ read menu_choice
 		fi
 	if [ "$menu_choice" = 3 ]
 		then
+			clear
+			while true; do
+			printf "\n"
 			echo -n " On the ___ Day of Christmas my true love sent to me (type 0 to exit) "
 			read christmasDay
-			while [[ $christmasDay != 0 ]] ; do
 				if [ $christmasDay = 1 ]
 				then
-					echo -n " A partridge in a pear tree! "
+					echo -n " A partridge in a pear tree! " 
 				fi
 					if [ $christmasDay = 2 ]
 					then
@@ -88,7 +92,7 @@ read menu_choice
 						fi
 					if [ $christmasDay = 0 ]
 					then
-						break
-					fi
+						exit 0
+				 	fi
 			done
 fi
