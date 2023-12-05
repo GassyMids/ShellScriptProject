@@ -1,0 +1,94 @@
+#================================================================================================================
+# shellScriptAssignment
+# Made by Dustin Moats
+# Created on 11/27/2023
+# The purpose of this program is to create and better understand how to create a shell script program.
+# This assignment is due at 12/17/2023
+# !/bin/bash =====================================================================
+
+
+echo " Welcome to Dustin's WONDERFUL and AMAZING shell script. Below are a set of options to choose from. "
+echo " (1) Check the system's current date and time "
+echo " (2) First Name Initial Checker "
+echo " (3) 12 Days of Christmas Song "
+echo " (4) Find out the Sum of your Age! "
+echo " (5) Would you like to play a game? "
+echo " (9) Exit "
+
+read menu_choice
+	if [ "$menu_choice" = 1 ]
+		then
+			systemTime= "date"
+			echo " The current time and date is listed above: "
+			echo -n " $systemTime " 
+		fi
+	if [ "$menu_choice" = 2 ]
+		then
+			echo -n " What is your FIRST name? "
+			read firstName
+			firstInitial=${firstName:0:1}
+				if [[ $firstName =~ ^[0-9]+$ ]]; then
+					echo " Your name cointains a number? "
+				else
+					echo $firstInitial
+			fi
+		fi
+	if [ "$menu_choice" = 3 ]
+		then
+			echo -n " On the ___ Day of Christmas my true love sent to me (type 0 to exit) "
+			read christmasDay
+			while [[ $christmasDay != 0 ]] ; do
+				if [ $christmasDay = 1 ]
+				then
+					echo -n " A partridge in a pear tree! "
+				fi
+					if [ $christmasDay = 2 ]
+					then
+						echo -n " Two turtle doves! "
+						fi
+					if [ $christmasDay = 3 ]
+					then
+						echo -n " Three French hens! "		
+						fi
+					if [ $christmasDay = 4 ]
+					then
+						echo -n " Four calling birds! "
+						fi
+					if [ $christmasDay = 5 ]
+					then
+						echo -n " Five... GOLDEN RINGS...! "
+						fi
+					if [ $christmasDay = 6 ]
+					then
+						echo -n " Six geese-a-laying! "
+						fi
+					if [ $christmasDay = 7 ]
+					then
+						echo -n " Seven swans-a-swimming! "
+						fi
+					if [ $christmasDay = 8 ]
+					then
+						echo -n " Eight maids-a-milking! "
+						fi
+					if [ $christmasDay = 9 ]
+					then
+						echo -n " Nine ladies dancing! "
+						fi
+					if [ $christmasDay = 10 ]
+					then
+						echo -n " Ten lords-a-leaping! "
+						fi
+					if [ $christmasDay = 11 ]
+					then
+						echo -n " Eleven pipers piping! "
+						fi
+					if [ $christmasDay = 12 ]
+					then
+						echo -n " Twelve drummers drumming! "
+						fi
+					if [ $christmasDay = 0 ]
+					then
+						break
+					fi
+			done
+fi
