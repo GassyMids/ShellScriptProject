@@ -32,7 +32,7 @@ read menu_choice
 				if [[ $firstName =~ ^[0-9]+$ ]]; then
 					echo " Your name cointains a number? "
 				else
-					echo $firstInitial
+					echo " The first letter in your name is a(n):" $firstInitial
 			fi
 		fi
 	if [ "$menu_choice" = 3 ]
