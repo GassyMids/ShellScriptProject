@@ -1,12 +1,11 @@
-#================================================================================================================
-# shellScriptAssignment
-# Made by Dustin Moats
-# Created on 11/27/2023
-# The purpose of this program is to create and better understand how to create a shell script program.
-# This assignment is due at 12/17/2023
+#================================================================================================================ shellScriptAssignment Made by Dustin Moats 
+# Created on 11/27/2023 The purpose of this program is to create and better understand how to create a shell script program. This assignment is due at 
+# 12/17/2023
 # !/bin/bash =====================================================================
 
+while true ; do
 
+# below is the main menu. The user is presented with 5 different menu choices, and an extra option (9) to exit the script.
 echo " Welcome to Dustin's WONDERFUL and AMAZING shell script. Below are a set of options to choose from. "
 echo " (1) Check the system's current date and time "
 echo " (2) First Name Initial Checker "
@@ -16,32 +15,147 @@ echo " (5) Would you like to play a game? "
 echo " (9) Exit "
 
 read menu_choice
-	if [ "$menu_choice" = 1 ]
-		then
+	# below is if the user selects option 9. This option will exit the program
+	if [ "$menu_choice" = 9 ]; then
+		clear
+		echo "Goodbye!"
+		exit 0
+		fi
+	# below is if the user selects option 1. Which will return the system's time and date
+	if [ "$menu_choice" = 1 ] ; then
 			clear
 			systemTime= "date"
 			echo " The current time and date is listed above: "
-			echo -n " $systemTime " 
+			echo -n " $systemTime "
+			echo "--------------------" 
 		fi
-	if [ "$menu_choice" = 2 ]
-		then
+	# below is if the user selects option 2. Which will ask for the user's first name
+	if [ "$menu_choice" = 2 ] ; then
 			clear
-			echo -n " What is your FIRST name? "
-			read firstName
+			echo -n " What is your FIRST name? " ; read firstName
+			# below check's for the first character in the user's first name.
 			firstInitial=${firstName:0:1}
-				if [[ $firstName =~ ^[0-9]+$ ]]; then
-					echo " Your name cointains a number? "
-				else
-					echo " The first letter in your name is a(n):" $firstInitial
-			fi
+					echo "The first letter in your name is a(n):" $firstInitial
+					echo "--------------------"
 		fi
-	if [ "$menu_choice" = 3 ]
-		then
+	# below is if the user selects option 4. Which  will ask for the user's age and will show them the sum of their age at certain points
+	# this section will also add the two numbers from their age and add them
+	if [ "$menu_choice" = 4 ] ; then
+		clear
+		while true ; do
+		echo " What is your age? Type 0 to exit "
+		read age
+			if [ "$age" != "0" ] ; then
+				echo " "
+				# the line below will read the first two numbers read in the age variable and split it into two new variables
+				ageSumNum1=${age:0:1} ; ageSumNum2=${age:1:2}
+				# this line below adds the two variables together to create another variable ageTotal
+				ageTotal=$(($ageSumNum1 + $ageSumNum2))
+				# the second lines below are variables that are used to give the user's age five and ten years ago
+				ageSumDecade=$(($age - 10))
+				ageSumFiveYear=$(($age - 5))
+				echo "---------------------------------"
+				echo "---------------------------------"
+				echo " The sum of the two numbers in your age equals " $ageTotal
+				echo "---------------------------------"
+				echo "---------------------------------"
+				echo "Your age 5 years ago is" $ageSumDecade
+				echo $age " - 5 = " $ageSumFiveYear
+				echo $ageSumFiveYear " + 5 = " $age
+				echo "Your age 10 years ago is" $ageSumFiveYear "... when the Dollar Menu still existed"
+				echo $age " - 10 = " $ageSumDecade
+				echo $ageSumDecade " + 10 = " $age
+			else
+				clear
+				break
+			fi
+			done
+		fi
+	# below is if the user selects option 5. Which will start the Guess the Lyrics game.
+	if [ "$menu_choice" = 5 ] ; then
+		clear
+		read -n 1 -r -s -p "Welcome to the Guess the Band/Singer/Artist! You will have guess whoever made three songs, each progressively getting harder. Press any key to proceed"
+			# below reads whether the user selects yes or no. If the user chooses no then they return to the main menu
+			# if the user chooses yes then they will proceed with the game
 			clear
+			echo "Song 1:"
+			echo "--------------------"
+			echo "Somebody once told me the world is gonna roll me"
+			echo "I ain't the sharpest tool in the shed..."
+			echo "She was looking kind of dumb with a finger and her thumb"
+			echo "In the shape of an L on her forehead..."
+			echo "--------------------"
+			echo "Who was the band that created this song?"
+			echo " "
+			echo -e "A. Smash Mouth\nB. Limp Biskit\nC. Metallica\nD. Katy Perry"
+			read songQuestion1
+				if [ "$songQuestion1" = "A" ]; then
+					echo "Correct! On to the next one, this one will be slightly harder"
+					fi
+				if [ "$songQuestion1" != "A" ]; then
+					echo "Seriously? How did you get this one wrong"
+					fi
+			read -n 1 -r -s -p "Press any key to continue..."
+			clear
+			echo "Song 2:"
+			echo "--------------------"
+			echo "I cannot take this anymore..."
+			echo "Saying everything I've said before"
+			echo "All these words they make no sense, I find bliss in ignorance"
+			echo "Less I hear the less you say, you'll find that out anyway..."
+			echo "... just like before ..."
+			echo "--------------------"
+			echo "Who was the band that created this song?"
+			echo " "
+			echo -e "A. Sum 41\nB. Puddle of Mudd\nC. Linkin Park\nD. Disturbed"
+			read songQuestion2
+				if [ "$songQuestion2" = "C" ]; then
+					echo "Correct! On to the next one, this one will be medium in difficulty"
+					fi
+				if [ "$songQuestion2" != "C" ]; then
+					echo "Sorry, you got that wrong!"
+					fi
+			read -n 1 -r -s -p "Press any key to continue..."
+			clear
+			echo "Song 3:"
+			echo "--------------------"
+			echo "His palms are sweaty, knees weak, arms are heavy"
+			echo "There's vomit on his sweater already, mom's spaghetti"
+			echo "He's nervous, but on the surface he looks calm and ready"
+			echo "To drop bombs, but he keeps on forgetting"
+			echo "What he wrote down, the whole crowd goes so loud"
+			echo "He opens his mouth, but the words won't come out"
+			echo "He's chokin', how? Everybody's jokin' now"
+			echo "The clock's run out, time's up, over BLAOW"
+			echo "--------------------"
+			echo "Who was the artist that created this song?"
+			echo " "
+			echo -e "A. Mac Miller\nB. Eminem\nC. D12\nD. Kanye West"
+			read songQuestion3
+				if [ "$songQuestion3" = "B" ]; then
+					echo "Correct!"
+					echo " "
+					fi
+				if [ "$songQuestion3" != "B" ]; then
+					echo "Incorrect!"
+					fi
+			read -n 1 -r -s -p "You've reached the end of this game, thank you for playing! Press any key to continue..."
+			clear
+		fi
+	# below is if the user selects option 3. Which will start a while loop for the 12 Day of Christmas song
+	if [ "$menu_choice" = 3 ] ; then
+			clear
+			# below starts the while loop, the user will stay in this loop indefinetly until the user types 0
 			while true; do
 			printf "\n"
-			echo -n " On the ___ Day of Christmas my true love sent to me (type 0 to exit) "
+			echo -n "On the ___ Day of Christmas my true love sent to me! Type 0 to exit "
 			read christmasDay
+				# below reads if and only if the user inputs a Christmas day that is  not a number between 0-12 
+				if ! [[ $christmasDay =~ ^[0-9]+$ ]] || ((christmasDay < 0 || christmasDay > 12));
+				then
+					echo " Oops! I do not know that Christmas Day! Please input a number between 0-12 "
+				fi
+				# below is if the user types a valid input, assuming so the following code runs 
 				if [ $christmasDay = 1 ]
 				then
 					echo -n " A partridge in a pear tree! " 
@@ -92,7 +206,9 @@ read menu_choice
 						fi
 					if [ $christmasDay = 0 ]
 					then
-						exit 0
-				 	fi
-			done
-fi
+						break
+						fi
+		
+			done		
+		fi
+done
